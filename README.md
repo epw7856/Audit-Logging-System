@@ -10,5 +10,5 @@ It is thread-safe and cross-platform compatible. The following macros are used t
 
 The log files are saved to the following locations:
 
-Windows: C:/Users/\<USER\>/.AuditLogs/
-Linux: ~/.AuditLogs/
+* Windows: C:/Users/\<USER\>/.AuditLogs/
+* Linux: ~/.AuditLogs/
