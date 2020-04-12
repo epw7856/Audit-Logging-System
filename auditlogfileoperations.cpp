@@ -36,7 +36,6 @@ void AuditLogFileOperations::streamToFile(const QString message)
 
 void AuditLogFileOperations::closeLogFile()
 {
-    qDebug() << logFile.size();
     if(logFile.isOpen())
     {
         writeLogFileFooter();
@@ -75,10 +74,9 @@ void AuditLogFileOperations::verifyLogfileSize()
     if(logFile.size() >= LogFileMaxSize)
     {
         writeLogFileFooter();
-        logFileCount++;
         QString nextLogFilePath = logFile.fileName();
         nextLogFilePath.truncate(nextLogFilePath.lastIndexOf("_") + 1);
-        nextLogFilePath += QString::number(logFileCount) + ".log";
+        nextLogFilePath += QString::number(logFileCount+1) + ".log";
 
         configureLogFile(nextLogFilePath);
     }

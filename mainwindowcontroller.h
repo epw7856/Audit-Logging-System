@@ -1,8 +1,12 @@
 #ifndef MAINWINDOWCONTROLLER_H
 #define MAINWINDOWCONTROLLER_H
 
-class MainWindowController
+#include <QObject>
+
+class MainWindowController : public QObject
 {
+    Q_OBJECT
+
 public:
     MainWindowController();
     void logDebugMsg();
@@ -10,6 +14,9 @@ public:
     void logWarningMsg();
     void logCriticalMsg();
     void logFatalMsg();
+
+signals:
+    void sendStatusUpdate(QString);
 };
 
 #endif // MAINWINDOWCONTROLLER_H

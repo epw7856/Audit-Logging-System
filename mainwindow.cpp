@@ -9,11 +9,18 @@ MainWindow::MainWindow(QWidget *parent) :
     mainWindowController(std::make_shared<MainWindowController>())
 {
     ui->setupUi(this);
+    connect(mainWindowController.get(), &MainWindowController::sendStatusUpdate, this, &MainWindow::updateStatusLineEdit);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::updateStatusLineEdit(QString message)
+{
+    ui->statusLineEdit->clear();
+    ui->statusLineEdit->setText(message);
 }
 
 void MainWindow::on_debugButton_clicked()

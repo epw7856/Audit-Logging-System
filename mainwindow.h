@@ -19,6 +19,9 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void updateStatusLineEdit(QString message);
+
 private slots:
     void on_debugButton_clicked();
 
