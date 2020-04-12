@@ -9,5 +9,6 @@ It is thread-safe and cross-platform compatible. The following macros are used t
 - AUDIT_FATAL()
 
 The log files are saved to the following locations:
+
 Windows: C:\Users\<USER>\.AuditLogs\
 Linux: ~/.AuditLogs/
