@@ -93,6 +93,7 @@ void AuditLogManager::setEnabledLogMsgTypes()
             break;
 
         default:
+
             enabledMsgTypes = {};
             break;
     }

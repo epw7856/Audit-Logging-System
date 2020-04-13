@@ -18,7 +18,9 @@ AuditLogFileOperations::AuditLogFileOperations()
     const QString& logFilePath = QString("%1").arg(auditLogsPath +
                                                    "AuditLog_" +
                                                    invocationTime.toString("yyyy-MM-dd_HH-mm-ss") +
-                                                   "_1.log");
+                                                   "_" +
+                                                   QString::number(logFileCount) +
+                                                   ".log");
 
     configureLogFile(logFilePath);
 }
@@ -60,9 +62,7 @@ void AuditLogFileOperations::configureLogFile(const QString &filePath)
         return;
     }
 
-    logFileCount++;
     stream.setDevice(&logFile);
-
     writeLogFileHeader();
 }
 
@@ -74,9 +74,10 @@ void AuditLogFileOperations::verifyLogfileSize()
     if(logFile.size() >= LogFileMaxSize)
     {
         writeLogFileFooter();
+        logFileCount++;
         QString nextLogFilePath = logFile.fileName();
         nextLogFilePath.truncate(nextLogFilePath.lastIndexOf("_") + 1);
-        nextLogFilePath += QString::number(logFileCount+1) + ".log";
+        nextLogFilePath += QString::number(logFileCount) + ".log";
 
         configureLogFile(nextLogFilePath);
     }

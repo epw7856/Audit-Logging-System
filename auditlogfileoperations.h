@@ -21,7 +21,7 @@ private:
     QFile logFile;
     QTextStream stream;
     QDateTime invocationTime;
-    quint32 logFileCount = 0;
+    quint32 logFileCount = 1U;
 
     void configureLogFile(const QString& filePath);
     void verifyLogfileSize();
